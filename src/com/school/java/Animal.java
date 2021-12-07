@@ -110,8 +110,14 @@ public abstract class Animal {
     }
 
 
-    public String feedAnimal(Food food) throws NoSuchFieldException {
+    public String feedAnimal(Food food) throws NoSuchFieldException, IllegalAccessException {
         String reactionToFood = "  I will not eat " + food;
+
+        EnumSet preferredFood = (EnumSet) this.getClass().getField("preferredFood").get(food);
+        if (preferredFood.contains(food)) {
+            reactionToFood = "  I will eat " + food + " (this is exactly what I eat!)";
+            return reactionToFood;
+        }
 
         try {
             Field feedingBehaviour = this.getClass().getField("feedingBehaviour");

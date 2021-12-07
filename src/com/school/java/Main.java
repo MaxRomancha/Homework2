@@ -59,7 +59,7 @@ public class Main {
         return listOfCreatedAnimals;
     }
 
-    public static void task1(ArrayList<Animal> listAnimalInstances) throws NoSuchFieldException {
+    public static void task1(ArrayList<Animal> listAnimalInstances) throws NoSuchFieldException, IllegalAccessException {
         for (Animal currentAnimal : listAnimalInstances) {
             System.out.print(currentAnimal.printClassProperties());
             System.out.println(currentAnimal.feedAnimal(Food.GRASS));
